@@ -1,4 +1,4 @@
-# Visionary AI✨
+# ✨Visionary AI
 
 ## 팀 소개
 저희 **Visionary AI** 팀은 시각장애인을 위한 스마트 보조 시스템 개발을 목표로 활동하고 있습니다.  
