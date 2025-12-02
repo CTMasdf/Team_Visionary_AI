@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# ===============================
+# Raspberry Pi AI 비서 설치 스크립트
+# 한글 환경 + Python 패키지 + 필수 툴 설치
+# ===============================
+
+echo "=== Raspberry Pi AI 비서 설치 시작 ==="
+
+# 1. 시스템 업데이트
+sudo apt update
+sudo apt full-upgrade -y
+
+# 2. 필수 패키지 설치
+sudo apt install -y python3-pip python3-dev python3-venv \
+git build-essential ffmpeg libatlas-base-dev \
+libasound2-dev portaudio19-dev libportaudio2 \
+sox mpg123 pulseaudio alsa-utils \
+libttspico-utils espeak rpi.gpio python3-rpi.gpio \
+python3-pygame libffi-dev libssl-dev \
+libopencv-dev python3-opencv
+
+# 3. pip 업그레이드
+python3 -m pip install --upgrade pip
+
+# 4. Python 패키지 설치
+pip3 install --upgrade \
+gTTS google-generativeai python-dotenv SpeechRecognition pydub
+
+# 5. 한글 폰트 설치
+sudo apt install -y fonts-nanum fonts-nanum-extra
+
+# 6. 카메라 도구 설치
+sudo apt install -y libraspberrypi-bin
+
+# 7. locale 설정 (한글)
+sudo apt install -y locales
+sudo locale-gen ko_KR.UTF-8
+sudo update-locale LANG=ko_KR.UTF-8
+
+# 8. 파이썬 가상환경 생성 (선택)
+python3 -m venv ~/chatbot_env
+source ~/chatbot_env/bin/activate
+pip install --upgrade pip
+
+echo "=== 설치 완료 ==="
+echo "이제 Python 가상환경에서 AI 비서 프로젝트를 실행할 수 있습니다."
